@@ -1,0 +1,15 @@
+<%= form_for @animation do |f| %>
+
+<p>
+	<%= f.label :title %><br>
+	<%= f.text_field :title %>
+	<% if @animation.errors.any? %>
+	<%= @animation.errors.messages[:title][0] %>
+	<% end %>
+</p>
+
+<p>
+	<%= f.submit %>
+</p>
+
+<% end %>

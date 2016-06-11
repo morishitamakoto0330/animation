@@ -1,0 +1,13 @@
+<h1>アニメ</h1>
+
+<ul>
+	<% @animations.each do |animation| %>
+		<li> 
+			<%= link_to animation.title, animation_path(animation.id) %>
+			<%= link_to "[編集]", edit_animation_path(animation.id) %>
+			<%= link_to "[削除]", animation_path(animation.id), method: :delete, data: { confirm: "本当に削除しますか？" } %>
+		</li>
+	<% end %>
+</ul>
+
+<p><%= link_to "アニメ追加", new_animation_path %></p>
