@@ -6,6 +6,7 @@
 	<% if @animation.errors.any? %>
 	<%= @animation.errors.messages[:title][0] %>
 	<% end %>
+	<%= f.collection_select(:day, :day, @days, :id, :day) %>
 </p>
 
 <p>

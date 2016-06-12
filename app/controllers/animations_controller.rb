@@ -2,6 +2,8 @@ class AnimationsController < ApplicationController
 	
 	before_action :set_animation, only: [:show, :edit, :update, :destroy]
 	
+	@days = ["Sun","Mon","Tue","Wed","Thu","Fri"]
+	
 	def index
 		@animations = Animation.all
 	end
