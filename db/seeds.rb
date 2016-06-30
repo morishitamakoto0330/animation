@@ -5,7 +5,6 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-=begin
 Day.create(day: '日')
 Day.create(day: '月')
 Day.create(day: '火')
@@ -24,5 +23,5 @@ Season.create(season: '春')
 Season.create(season: '夏')
 Season.create(season: '秋')
 Season.create(season: '冬')
-=end
-User.create(name: 'admin', password_digest: BCrypt::Password.create('admin'))
+
+#User.create(name: 'admin', password_digest: BCrypt::Password.create('admin'))
