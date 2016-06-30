@@ -1,13 +1,34 @@
-<h1>アニメ</h1>
-
+<h1><%= @current_user.name %>さんのアニメ視聴リスト</h1>
+<h3>今季アニメ(合計<%= @count %>本)</h3>
 <ul>
 	<% @animations.each do |animation| %>
-		<li> 
-			<%= link_to animation.title, animation_path(animation.id) %>
-			<%= link_to "[編集]", edit_animation_path(animation.id) %>
-			<%= link_to "[削除]", animation_path(animation.id), method: :delete, data: { confirm: "本当に削除しますか？" } %>
-		</li>
+		<% if animation.finished == 0 && animation.viewer == @current_user.name %>
+			<li> 
+				<%= link_to animation.title, animation_path(animation.id) %>
+				<%= link_to "[編集]", edit_animation_path(animation.id) %>
+				<%= link_to "[削除]", animation_path(animation.id), method: :delete, data: { confirm: "本当に削除しますか？" } %>
+			</li>
+		<% end %>
 	<% end %>
 </ul>
-
 <p><%= link_to "アニメ追加", new_animation_path %></p>
+<table border="1">
+	<tr align="center" bgcolor="#98FB98">
+		<% @days.each do |day| %>
+			<td> <%= day.day %> </td>
+		<% end %>
+	</tr>
+	<tr>
+		<% @days.each do |day| %>
+			<td>
+			<% @animations.each do |animation| %>
+				<% if day.day == animation.day && animation.finished == 0 && animation.viewer == @current_user.name %>
+					◇<%= animation.title %><br>
+				<% end %>
+			<% end %>
+			</td>
+		<% end %>
+	</tr>
+</table>
+<p><%= link_to "過去アニメ", past_animations_path %></p>
+<p><%= link_to "ホーム", animations_path %></p>

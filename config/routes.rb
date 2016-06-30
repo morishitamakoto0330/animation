@@ -1,9 +1,15 @@
 Rails.application.routes.draw do
 	
+	resources :users
 	resources :animations
+	resources :session, path: "login", only: [:index, :create] do
+		collection do 
+			delete '/', to: "session#delete"
+		end
+	end
 	
-	root 'animations#index'
-	
+	root 'session#index'
+	get 'past_animations' => 'animations#past_show'
 	# The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

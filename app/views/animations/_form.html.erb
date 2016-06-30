@@ -1,16 +1,22 @@
 <%= form_for @animation do |f| %>
 
 <p>
-	<%= f.label :title %><br>
-	<%= f.text_field :title %>
+	<%= f.collection_select :ad, Ad.all, :ad, :ad %>
+	<%= f.label "年" %>
+	<%= f.collection_select :season, Season.all, :season, :season %>アニメ<br>
+	<%= f.label "アニメタイトル" %><br>
+	<%= f.text_field :title %><br>
 	<% if @animation.errors.any? %>
-	<%= @animation.errors.messages[:title][0] %>
+		<%= @animation.errors.messages[:title][0] %><br>
 	<% end %>
-	<%= f.collection_select(:day, :day, @days, :id, :day) %>
+	<%= f.label "放送曜日:" %>
+	<%= f.collection_select :day, Day.all, :day, :day %>曜日<br>
 </p>
 
 <p>
 	<%= f.submit %>
 </p>
+
+<p> <%= f.check_box :finished %> <%= f.label :finished, "視聴終了"%> </p>
 
 <% end %>

@@ -1,0 +1,20 @@
+<% if @current_user.name == "admin" %>
+	<h1>管理者ページ</h1>
+	<h3>ユーザリスト</h3>
+	<% @users.each do |user| %>
+		<% if user.name != "admin"%>
+			<li>
+				<%= user.name %>
+				<%= link_to "[編集]", edit_user_path(user.id) %>
+				<%= link_to "[削除]", user_path(user.id), method: :delete, data: { confirm: "本当に削除しますか？" } %>
+			</li>
+		<% else %>
+			<li><%= user.name %>(管理者)</li>
+		<% end %>
+	<% end %>
+	<p><%= link_to "ユーザ追加", new_user_path %></p>
+	<p><%= link_to 'ホーム', users_path %></p>
+<% else %>
+	<h1><%= @current_user.name %>さん</h1>
+	<%= link_to "アニメ一覧", animations_path %><br>
+<% end %>

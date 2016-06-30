@@ -1,0 +1,17 @@
+<h1>ログイン画面</h1>
+
+<%= form_for(@user, url: session_index_path, method: :post) do |f| %>
+	<% if flash[:error] %>
+		<p>ユーザ名またはパスワードが違います</p>
+	<% end %>
+	
+	<%= hidden_field_tag :referer, flash[:referer] %>
+	
+	<%= f.label :name, "ユーザ名　:" %>
+	<%= f.text_field :name %><br>
+	
+	<%= f.label :password, "パスワード:" %>
+	<%= f.password_field :password %><br>
+	
+	<%= f.submit("ログイン") %>
+<% end %>
