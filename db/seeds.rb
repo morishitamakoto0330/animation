@@ -24,4 +24,4 @@ Season.create(season: '夏')
 Season.create(season: '秋')
 Season.create(season: '冬')
 
-#User.create(name: 'admin', password_digest: BCrypt::Password.create('admin'))
+User.create(name: 'admin', password_digest: BCrypt::Password.create('admin'))

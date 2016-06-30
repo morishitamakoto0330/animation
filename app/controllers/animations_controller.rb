@@ -66,7 +66,7 @@ class AnimationsController < ApplicationController
 	private
 	
 		def animation_params
-			params[:animation].permit(:title, :day, :ad, :season, :finished)
+			params[:animation].permit(:title, :day, :ad, :season, :finished, :viewer)
 		end
 		
 		def set_animation
