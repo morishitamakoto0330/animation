@@ -5,12 +5,10 @@ class AnimationsController < ApplicationController
 	before_action :set_animation, only: [:show, :edit, :update, :destroy]
 	
 	def index
-		puts 'index:' + @current_user.name
 		@days = Day.all
 		@animations = Animation.all
 		@count = 0
 		@animations.each do |animation|
-			puts animation.title
 			if animation.finished == 0 && animation.viewer == @current_user.name
 				@count = @count + 1
 			end
