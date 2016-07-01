@@ -4,7 +4,7 @@
 	<% @seasons.each do |season| %>
 		<% @count = 0 %>
 		<% @animations.each do |animation| %>
-			<% if animation.finished=='t' && animation.ad==ad.ad && animation.season==season.season && animation.viewer==@current_user.name %>
+			<% if animation.finished && animation.ad==ad.ad && animation.season==season.season && animation.viewer==@current_user.name %>
 				<% @count += 1 %>
 			<% end %>
 		<% end %>
@@ -12,7 +12,7 @@
 			<li><%= season.season %>アニメ(<%= @count %>本)
 				<ul>
 					<% @animations.each do |animation| %>
-						<% if animation.finished=='t' && animation.ad==ad.ad && animation.season==season.season && animation.viewer == @current_user.name %>
+						<% if animation.finished && animation.ad==ad.ad && animation.season==season.season && animation.viewer == @current_user.name %>
 							<li>
 								<%= link_to animation.title, animation_path(animation.id) %>
 								<%= link_to "[編集]", edit_animation_path(animation.id) %>
