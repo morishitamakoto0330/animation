@@ -9,6 +9,7 @@ class AnimationsController < ApplicationController
 		@animations = Animation.all
 		@count = 0
 		@animations.each do |animation|
+			puts animation.finished
 			if animation.finished == 'f' && animation.viewer == @current_user.name
 				@count = @count + 1
 			end
